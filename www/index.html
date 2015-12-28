@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!-- CSP support mode (required for Windows Universal apps): https://docs.angularjs.org/api/ng/directive/ngCsp -->
+<html lang="en" ng-app="app" ng-csp>
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- JS dependencies (order matters!) -->
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/onsen/js/jquery.js"></script>
+    <script src="lib/onsen/js/jquery-mobile.js"></script>
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="lib/onsen/js/script.js"></script>
+    <script src="lib/onsen/js/index.js"></script>
+    <script src="lib/onsen/js/modernizr.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-theme.css" />
+    <link rel="stylesheet" href="lib/onsen/css/index.css" />
+    <link rel="stylesheet" href="lib/onsen/css/jquery-mobile.css" />
+    <link rel="stylesheet" href="lib/onsen/css/main.css" />
+    <link rel="stylesheet" href="lib/onsen/css/normalize.css" />
+
+    <!-- CSP support mode (required for Windows Universal apps) -->
+    <link rel="stylesheet" href="lib/angular/angular-csp.css" />
+
+
+    <!-- --------------- App init --------------- -->
+
+    <title>Onsen UI Sliding Menu</title>
+
+    <script>
+        angular.module('app', ['onsen']);
+    </script>
+
+    <style>
+        .page--menu-page__background {
+            background-color: #fff;
+        }
+
+        .page--menu-page__content {
+            color: white;
+        }
+
+        .menu-close,
+        .menu-close > .toolbar-button {
+            color: #999;
+        }
+
+        .menu-list,
+        .menu-item:first-child,
+        .menu-item:last-child,
+        .menu-item {
+            background-color: transparent;
+            background-image: none !important;
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .menu-item {
+            padding: 0 0 0 20px;
+            line-height: 52px;
+            height: 52px;
+            text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 0px;
+        }
+
+            .menu-item:active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+        .menu-notification {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 14px;
+            height: 16px;
+            line-height: 16px;
+            min-width: 16px;
+            font-weight: 600;
+        }
+
+        .bottom-menu-list,
+        .bottom-menu-item:first-child,
+        .bottom-menu-item:last-child,
+        .bottom-menu-item {
+            border-color: #393939;
+            background-color: transparent;
+            background-image: none !important;
+            color: #ccc;
+        }
+
+            .bottom-menu-item:active {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+    </style>
+
+</head>
+
+<body>
+    <!-- Cordova reference -->
+    <script src="cordova.js"></script>
+    <script src="scripts/index.js"></script>
+    <!-- -->
+
+<ons-tabbar>
+  <ons-tab page="page1.html" label="Home" icon="ion-home" active="true"></ons-tab>
+  <ons-tab page="comments.html" label="Shop" icon="ion-ios-cart-outline"></ons-tab>
+  <ons-tab page="tags.html" label="Mewow" icon="ion-ios-paw-outline"></ons-tab>
+  <ons-tab page="settings.html" label="Sale" icon="ion-ios-lightbulb-outline"></ons-tab>
+</ons-tabbar>
+
+    <ons-template id="page1.html" style="margin-bottom:100px">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Page 1</div>
+            </ons-toolbar>
+            <ons-row style="text-align: center;">
+                <ons-col>
+				<ul id="page1" class="ui-grid-a"></ul>				
+				</ons-col>
+            </ons-row>
+        </ons-page>
+    </ons-template>
+
+    <ons-template id="page2.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Page 2</div>
+            </ons-toolbar>
+
+
+            <ons-row style="margin-top: 100px; text-align: center;">
+                <ons-col>
+                    <ul id="page2" class="ui-grid-a"></ul>
+					<a data-role="button" data-transition="flip" ng-click="menu.setMainPage('page3.html')">Next Page</a><br>
+					<a data-role="button" data-transition="flip" ng-click="menu.setMainPage('page1.html')">Previous Page</a>
+                </ons-col>
+            </ons-row>
+
+        </ons-page>
+    </ons-template>
+	
+    <ons-template id="page3.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="center">Page 3</div>
+            </ons-toolbar>
+
+
+            <ons-row style="margin-top: 100px; text-align: center;">
+                <ons-col>
+                    <ul id="page3" class="ui-grid-a"></ul>
+					<a data-role="button" data-transition="flip" ng-click="menu.setMainPage('page2.html')">Previous Page</a>
+                </ons-col>
+            </ons-row>
+
+        </ons-page>
+    </ons-template>
+	
+</body>
+</html>
